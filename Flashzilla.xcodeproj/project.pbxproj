@@ -18,6 +18,8 @@
 		094C6D8626DD194D00AD1F02 /* HapticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094C6D8526DD194C00AD1F02 /* HapticsView.swift */; };
 		094C6D8926DD1C9500AD1F02 /* AdvancedHaptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094C6D8826DD1C9500AD1F02 /* AdvancedHaptics.swift */; };
 		094C6D8C26DD201500AD1F02 /* AdvancedHapticsExperiment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094C6D8B26DD201500AD1F02 /* AdvancedHapticsExperiment.swift */; };
+		094C6D8F26DD251200AD1F02 /* DisablingUserInteractivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094C6D8E26DD251200AD1F02 /* DisablingUserInteractivity.swift */; };
+		094C6D9226DD27E500AD1F02 /* TappableStackSpacer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094C6D9126DD27E500AD1F02 /* TappableStackSpacer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		094C6D8526DD194C00AD1F02 /* HapticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsView.swift; sourceTree = "<group>"; };
 		094C6D8826DD1C9500AD1F02 /* AdvancedHaptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedHaptics.swift; sourceTree = "<group>"; };
 		094C6D8B26DD201500AD1F02 /* AdvancedHapticsExperiment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedHapticsExperiment.swift; sourceTree = "<group>"; };
+		094C6D8E26DD251200AD1F02 /* DisablingUserInteractivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisablingUserInteractivity.swift; sourceTree = "<group>"; };
+		094C6D9126DD27E500AD1F02 /* TappableStackSpacer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TappableStackSpacer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +106,8 @@
 				094C6D8526DD194C00AD1F02 /* HapticsView.swift */,
 				094C6D8826DD1C9500AD1F02 /* AdvancedHaptics.swift */,
 				094C6D8B26DD201500AD1F02 /* AdvancedHapticsExperiment.swift */,
+				094C6D8E26DD251200AD1F02 /* DisablingUserInteractivity.swift */,
+				094C6D9126DD27E500AD1F02 /* TappableStackSpacer.swift */,
 			);
 			path = "Day 86";
 			sourceTree = "<group>";
@@ -177,6 +183,8 @@
 			files = (
 				094C6D8326DCDDDB00AD1F02 /* GestureSequences.swift in Sources */,
 				094C6D7926DCCD1200AD1F02 /* Gestures.swift in Sources */,
+				094C6D9226DD27E500AD1F02 /* TappableStackSpacer.swift in Sources */,
+				094C6D8F26DD251200AD1F02 /* DisablingUserInteractivity.swift in Sources */,
 				094C6D8C26DD201500AD1F02 /* AdvancedHapticsExperiment.swift in Sources */,
 				094C6D8926DD1C9500AD1F02 /* AdvancedHaptics.swift in Sources */,
 				094C6D7D26DCD00A00AD1F02 /* AdvancedGestures.swift in Sources */,
