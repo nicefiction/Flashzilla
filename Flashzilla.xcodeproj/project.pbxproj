@@ -11,6 +11,10 @@
 		094C6D6926DCB08100AD1F02 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094C6D6826DCB08100AD1F02 /* ContentView.swift */; };
 		094C6D6B26DCB08500AD1F02 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 094C6D6A26DCB08500AD1F02 /* Assets.xcassets */; };
 		094C6D6E26DCB08500AD1F02 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 094C6D6D26DCB08500AD1F02 /* Preview Assets.xcassets */; };
+		094C6D7926DCCD1200AD1F02 /* Gestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094C6D7826DCCD1100AD1F02 /* Gestures.swift */; };
+		094C6D7D26DCD00A00AD1F02 /* AdvancedGestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094C6D7C26DCD00A00AD1F02 /* AdvancedGestures.swift */; };
+		094C6D8026DCD97900AD1F02 /* MultipleGestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094C6D7F26DCD97900AD1F02 /* MultipleGestures.swift */; };
+		094C6D8326DCDDDB00AD1F02 /* GestureSequences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094C6D8226DCDDDB00AD1F02 /* GestureSequences.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +24,10 @@
 		094C6D6A26DCB08500AD1F02 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		094C6D6D26DCB08500AD1F02 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		094C6D6F26DCB08500AD1F02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		094C6D7826DCCD1100AD1F02 /* Gestures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gestures.swift; sourceTree = "<group>"; };
+		094C6D7C26DCD00A00AD1F02 /* AdvancedGestures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedGestures.swift; sourceTree = "<group>"; };
+		094C6D7F26DCD97900AD1F02 /* MultipleGestures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleGestures.swift; sourceTree = "<group>"; };
+		094C6D8226DCDDDB00AD1F02 /* GestureSequences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureSequences.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,10 +60,11 @@
 		094C6D6526DCB08100AD1F02 /* Flashzilla */ = {
 			isa = PBXGroup;
 			children = (
+				094C6D7626DCB08E00AD1F02 /* Techniques */,
 				094C6D6626DCB08100AD1F02 /* FlashzillaApp.swift */,
+				094C6D6F26DCB08500AD1F02 /* Info.plist */,
 				094C6D6826DCB08100AD1F02 /* ContentView.swift */,
 				094C6D6A26DCB08500AD1F02 /* Assets.xcassets */,
-				094C6D6F26DCB08500AD1F02 /* Info.plist */,
 				094C6D6C26DCB08500AD1F02 /* Preview Content */,
 			);
 			path = Flashzilla;
@@ -67,6 +76,25 @@
 				094C6D6D26DCB08500AD1F02 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		094C6D7626DCB08E00AD1F02 /* Techniques */ = {
+			isa = PBXGroup;
+			children = (
+				094C6D7726DCB09700AD1F02 /* Day 86 */,
+			);
+			path = Techniques;
+			sourceTree = "<group>";
+		};
+		094C6D7726DCB09700AD1F02 /* Day 86 */ = {
+			isa = PBXGroup;
+			children = (
+				094C6D7826DCCD1100AD1F02 /* Gestures.swift */,
+				094C6D7C26DCD00A00AD1F02 /* AdvancedGestures.swift */,
+				094C6D7F26DCD97900AD1F02 /* MultipleGestures.swift */,
+				094C6D8226DCDDDB00AD1F02 /* GestureSequences.swift */,
+			);
+			path = "Day 86";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +166,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				094C6D8326DCDDDB00AD1F02 /* GestureSequences.swift in Sources */,
+				094C6D7926DCCD1200AD1F02 /* Gestures.swift in Sources */,
+				094C6D7D26DCD00A00AD1F02 /* AdvancedGestures.swift in Sources */,
 				094C6D6926DCB08100AD1F02 /* ContentView.swift in Sources */,
+				094C6D8026DCD97900AD1F02 /* MultipleGestures.swift in Sources */,
 				094C6D6726DCB08100AD1F02 /* FlashzillaApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
