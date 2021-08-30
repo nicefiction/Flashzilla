@@ -14,7 +14,7 @@ struct FlashzillaApp: App {
       
       WindowGroup {
          // ContentView()
-         GestureSequences()
+         AdvancedHaptics()
       }
    }
 }
