@@ -29,6 +29,9 @@ struct NotificationCenterMessages: View {
       /// `UIApplication.significantTimeChangeNotification` is called
       /// when the user changes their clock or when daylight savings time changes .
       /// `UIResponder.keyboardDidShowNotification` is called when the keyboard is shown .
+      /// Each of these notifications works in exactly the same way :
+      /// use `onReceive()` to catch notifications from the publisher ,
+      /// then take whatever action you want .
    }
 }
 

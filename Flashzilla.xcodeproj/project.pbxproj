@@ -22,6 +22,7 @@
 		094C6D9226DD27E500AD1F02 /* TappableStackSpacer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094C6D9126DD27E500AD1F02 /* TappableStackSpacer.swift */; };
 		094C6D9626DE2A0C00AD1F02 /* TriggeringEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094C6D9526DE2A0C00AD1F02 /* TriggeringEvents.swift */; };
 		094C6D9A26DE2F4600AD1F02 /* NotificationCenterMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094C6D9926DE2F4600AD1F02 /* NotificationCenterMessages.swift */; };
+		094C6D9D26DE365900AD1F02 /* AccessibilityViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094C6D9C26DE365900AD1F02 /* AccessibilityViews.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		094C6D9126DD27E500AD1F02 /* TappableStackSpacer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TappableStackSpacer.swift; sourceTree = "<group>"; };
 		094C6D9526DE2A0C00AD1F02 /* TriggeringEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriggeringEvents.swift; sourceTree = "<group>"; };
 		094C6D9926DE2F4600AD1F02 /* NotificationCenterMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterMessages.swift; sourceTree = "<group>"; };
+		094C6D9C26DE365900AD1F02 /* AccessibilityViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityViews.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 			children = (
 				094C6D9526DE2A0C00AD1F02 /* TriggeringEvents.swift */,
 				094C6D9926DE2F4600AD1F02 /* NotificationCenterMessages.swift */,
+				094C6D9C26DE365900AD1F02 /* AccessibilityViews.swift */,
 			);
 			path = "Day 87";
 			sourceTree = "<group>";
@@ -196,6 +199,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				094C6D9626DE2A0C00AD1F02 /* TriggeringEvents.swift in Sources */,
+				094C6D9D26DE365900AD1F02 /* AccessibilityViews.swift in Sources */,
 				094C6D9A26DE2F4600AD1F02 /* NotificationCenterMessages.swift in Sources */,
 				094C6D8326DCDDDB00AD1F02 /* GestureSequences.swift in Sources */,
 				094C6D7926DCCD1200AD1F02 /* Gestures.swift in Sources */,
