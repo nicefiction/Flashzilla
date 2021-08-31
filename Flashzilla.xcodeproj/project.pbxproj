@@ -20,6 +20,7 @@
 		094C6D8C26DD201500AD1F02 /* AdvancedHapticsExperiment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094C6D8B26DD201500AD1F02 /* AdvancedHapticsExperiment.swift */; };
 		094C6D8F26DD251200AD1F02 /* DisablingUserInteractivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094C6D8E26DD251200AD1F02 /* DisablingUserInteractivity.swift */; };
 		094C6D9226DD27E500AD1F02 /* TappableStackSpacer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094C6D9126DD27E500AD1F02 /* TappableStackSpacer.swift */; };
+		094C6D9626DE2A0C00AD1F02 /* TriggeringEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094C6D9526DE2A0C00AD1F02 /* TriggeringEvents.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		094C6D8B26DD201500AD1F02 /* AdvancedHapticsExperiment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedHapticsExperiment.swift; sourceTree = "<group>"; };
 		094C6D8E26DD251200AD1F02 /* DisablingUserInteractivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisablingUserInteractivity.swift; sourceTree = "<group>"; };
 		094C6D9126DD27E500AD1F02 /* TappableStackSpacer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TappableStackSpacer.swift; sourceTree = "<group>"; };
+		094C6D9526DE2A0C00AD1F02 /* TriggeringEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriggeringEvents.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				094C6D7726DCB09700AD1F02 /* Day 86 */,
+				094C6D9426DE29CE00AD1F02 /* Day 87 */,
 			);
 			path = Techniques;
 			sourceTree = "<group>";
@@ -110,6 +113,14 @@
 				094C6D9126DD27E500AD1F02 /* TappableStackSpacer.swift */,
 			);
 			path = "Day 86";
+			sourceTree = "<group>";
+		};
+		094C6D9426DE29CE00AD1F02 /* Day 87 */ = {
+			isa = PBXGroup;
+			children = (
+				094C6D9526DE2A0C00AD1F02 /* TriggeringEvents.swift */,
+			);
+			path = "Day 87";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,6 +192,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				094C6D9626DE2A0C00AD1F02 /* TriggeringEvents.swift in Sources */,
 				094C6D8326DCDDDB00AD1F02 /* GestureSequences.swift in Sources */,
 				094C6D7926DCCD1200AD1F02 /* Gestures.swift in Sources */,
 				094C6D9226DD27E500AD1F02 /* TappableStackSpacer.swift in Sources */,
