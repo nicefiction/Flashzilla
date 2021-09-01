@@ -1,4 +1,6 @@
 // ContentView.swift
+// MARK: SOURCE
+// https://www.hackingwithswift.com/books/ios-swiftui/moving-views-with-draggesture-and-offset
 
 // MARK: - LIBRARIES -
 
@@ -29,14 +31,28 @@ struct ContentView: View {
          VStack {
             /// Make our stack of cards partially overlap with a neat 3D effect :
             ZStack {
-               ForEach(0..<cards.count) { (index: Int) in
-                  CardView(card: cards[index])
-                     .stacked(at: index,
-                              in: cards.count)
+               ForEach(0..<cards.count,
+                       id: \.self) { (index: Int) in
+                  CardView(card: cards[index]) {
+                     withAnimation {
+                        self.removeCard(at: index)
+                     }
+                  }
+                  .stacked(at: index,
+                           in: cards.count)
                }
             }
          }
       }
+   }
+   
+   
+   
+   // MARK: - METHODS
+   
+   func removeCard(at index: Int) {
+      
+      cards.remove(at: index)
    }
 }
 

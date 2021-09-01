@@ -13,8 +13,7 @@ struct FlashzillaApp: App {
    var body: some Scene {
       
       WindowGroup {
-         // ContentView()
-         AccessibilityViews()
+         ContentView()
       }
    }
 }
