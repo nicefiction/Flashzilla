@@ -1,6 +1,7 @@
 // ContentView.swift
 // MARK: SOURCE
 // https://www.hackingwithswift.com/books/ios-swiftui/moving-views-with-draggesture-and-offset
+// https://www.hackingwithswift.com/books/ios-swiftui/counting-down-with-a-timer
 
 // MARK: - LIBRARIES -
 
@@ -15,6 +16,16 @@ struct ContentView: View {
    @Environment(\.accessibilityDifferentiateWithoutColor) var accessibilityDifferentiateWithoutColor
    @State private var cards: Array<CardModel> = Array<CardModel>(repeating: CardModel.example,
                                                                  count: 10)
+   @State private var remainingTime = 100
+   @State private var timerIsActive: Bool = true
+   
+   
+   
+   // MARK: - PROPERTIES
+   
+   let timer = Timer.publish(every: 1,
+                             on: .main,
+                             in: RunLoop.Mode.common).autoconnect()
    
    
    
@@ -28,26 +39,17 @@ struct ContentView: View {
             .resizable()
             .scaledToFill()
             .edgesIgnoringSafeArea(.all)
-         if accessibilityDifferentiateWithoutColor {
-//            VStack {
-//               Spacer()
-               HStack {
-                  Group {
-                     Image(systemName: "xmark.circle")
-                     Spacer()
-                     Image(systemName: "checkmark.circle")
-                  }
-                  .padding()
-                  .background(Color.black.opacity(0.70))
-                  .clipShape(Circle())
-               }
-               .font(.largeTitle)
-               .foregroundColor(.white)
-               .padding()
-            }
-//         }
          /// Place a timer above our cards :
          VStack {
+            Text("Time: \(remainingTime)")
+               .font(.largeTitle)
+               .foregroundColor(.white)
+               .padding(.horizontal, 20)
+               .padding(.vertical, 5)
+               .background(
+                  Capsule()
+                     .fill(Color.black)
+                     .opacity(0.65))
             /// Make our stack of cards partially overlap with a neat 3D effect :
             ZStack {
                ForEach(0..<cards.count,
@@ -60,8 +62,42 @@ struct ContentView: View {
                   .stacked(at: index,
                            in: cards.count)
                }
+               if accessibilityDifferentiateWithoutColor {
+                  VStack {
+                     Spacer()
+                     HStack {
+                        Image(systemName: "xmark.circle")
+                           .padding()
+                           .background(Color.black.opacity(0.70))
+                           .clipShape(Circle())
+                        Spacer()
+                        Image(systemName: "checkmark.circle")
+                           .padding()
+                           .background(Color.black.opacity(0.70))
+                           .clipShape(Circle())
+                     }
+                     .font(.largeTitle)
+                     .foregroundColor(.white)
+                     .padding()
+                  }
+               }
             }
          }
+         .padding()
+      }
+      .onReceive(timer) { _ in
+         guard timerIsActive
+         else { return }
+         
+         if remainingTime > 0 {
+            remainingTime -= 1
+         }
+      }
+      .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in
+          self.timerIsActive = false
+      }
+      .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
+          self.timerIsActive = true
       }
    }
    
