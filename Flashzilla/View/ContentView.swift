@@ -82,6 +82,16 @@ struct ContentView: View {
                   }
                }
             }
+            /// Disables swiping on any card when the time runs out :
+            .allowsHitTesting(remainingTime > 0)
+            if cards.isEmpty {
+               Button("Start New Game",
+                      action: resetGame)
+                  .padding()
+                  .background(Color.white)
+                  .foregroundColor(.black)
+                  .clipShape(Capsule())
+            }
          }
          .padding()
       }
@@ -94,10 +104,12 @@ struct ContentView: View {
          }
       }
       .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in
-          self.timerIsActive = false
+         self.timerIsActive = false
       }
       .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
-          self.timerIsActive = true
+         if cards.isEmpty == false {
+            self.timerIsActive = true
+         }
       }
    }
    
@@ -108,6 +120,18 @@ struct ContentView: View {
    func removeCard(at index: Int) {
       
       cards.remove(at: index)
+      if cards.isEmpty {
+         timerIsActive = false
+      }
+   }
+   
+   
+   func resetGame() {
+      
+      cards = Array<CardModel>(repeating: CardModel.example,
+                               count: 10)
+      remainingTime = 100
+      timerIsActive = true
    }
 }
 
