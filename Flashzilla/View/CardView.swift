@@ -10,6 +10,7 @@ struct CardView: View {
    
    // MARK: - PROPERTY WRAPPERS
    
+   @Environment(\.accessibilityDifferentiateWithoutColor) var accessibilityDifferentiateWithoutColor
    @State private var isShowingTheAnswer: Bool = false
    @State private var dragAmount: CGSize = CGSize.zero // offset (PAUL HUDSON)
    
@@ -30,12 +31,29 @@ struct CardView: View {
    
    // MARK: - COMPUTED PROPERTIES
    
+   var cardFeedbackColor: some View {
+      
+      return RoundedRectangle(cornerRadius: 25.0,
+                              style: .continuous)
+         .fill(dragAmount.width > 0 ? Color.green : Color.red)
+   }
+   
+   
+   var cardDefaultColor: Color {
+      
+      return Color
+         .white
+         .opacity(1 - Double(abs(dragAmount.width / 50)))
+   }
+   
+   
    var body: some View {
       
-      ZStack {
+      return ZStack {
          RoundedRectangle(cornerRadius: 25.0,
                           style: .continuous)
-            .fill(Color.white)
+            .fill(accessibilityDifferentiateWithoutColor ? Color.white : cardDefaultColor)
+            .background(accessibilityDifferentiateWithoutColor ? nil : cardFeedbackColor)
             .shadow(radius: 10)
          VStack {
             Text(card.question)
@@ -70,7 +88,7 @@ struct CardView: View {
               y: 0)
       /// While we’re here , I want to add one more modifier based on the drag gesture .
       /// We are going to make the card fade out as it is dragged further away .
-      .opacity(2 - Double(abs(dragAmount.width / 50)))
+//      .opacity(2 - Double(abs(dragAmount.width / 50)))
       /// We’re going to take 1/50th of the drag amount , so the card doesn’t fade out too quickly .
       /// We don’t care whether they have moved to the left (negative numbers) or to the right (positive numbers) ,
       /// so we’ll put our value through the `abs()` function .

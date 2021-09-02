@@ -12,6 +12,7 @@ struct ContentView: View {
    
    // MARK: - PROPERTY WRAPPERS
    
+   @Environment(\.accessibilityDifferentiateWithoutColor) var accessibilityDifferentiateWithoutColor
    @State private var cards: Array<CardModel> = Array<CardModel>(repeating: CardModel.example,
                                                                  count: 10)
    
@@ -27,6 +28,24 @@ struct ContentView: View {
             .resizable()
             .scaledToFill()
             .edgesIgnoringSafeArea(.all)
+         if accessibilityDifferentiateWithoutColor {
+//            VStack {
+//               Spacer()
+               HStack {
+                  Group {
+                     Image(systemName: "xmark.circle")
+                     Spacer()
+                     Image(systemName: "checkmark.circle")
+                  }
+                  .padding()
+                  .background(Color.black.opacity(0.70))
+                  .clipShape(Circle())
+               }
+               .font(.largeTitle)
+               .foregroundColor(.white)
+               .padding()
+            }
+//         }
          /// Place a timer above our cards :
          VStack {
             /// Make our stack of cards partially overlap with a neat 3D effect :
