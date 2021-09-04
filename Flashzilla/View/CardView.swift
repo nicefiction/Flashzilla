@@ -1,4 +1,6 @@
 // CardView.swift
+// MARK: SOURCE
+// https://www.hackingwithswift.com/books/ios-swiftui/making-iphones-vibrate-with-uinotificationfeedbackgenerator
 
 // MARK: - LIBRARIES -
 
@@ -13,6 +15,7 @@ struct CardView: View {
    @Environment(\.accessibilityDifferentiateWithoutColor) var accessibilityDifferentiateWithoutColor
    @State private var isShowingTheAnswer: Bool = false
    @State private var dragAmount: CGSize = CGSize.zero // offset (PAUL HUDSON)
+   @State private var uiNotificationFeedbackGenerator = UINotificationFeedbackGenerator()
    
    
    
@@ -120,18 +123,31 @@ struct CardView: View {
             /// so we can prepare to remove the card ,
             /// but if they haven’t
             /// we’ll set `dragAmount` back to `0`:
-              .onChanged { gesture in
-                  self.dragAmount = gesture.translation
-              }
-              .onEnded { _ in
-                  if abs(self.dragAmount.width) > 100 {
-                      // remove the card
-                     self.removal?()
-                     /// `TIP`: That question mark in there means the closure will only be called if it has been set .
+            .onChanged { gesture in
+               dragAmount = gesture.translation
+               /// We are going to update our drag gesture
+               /// so that `prepare()` is called whenever the gesture changes .
+               /// This means it could be called a hundred times before `play()` is finally called ,
+               /// because it will get triggered every time the user moves their finger .
+               /// It is perfectly allowable to call `prepare()` many times before calling `play()` once
+               /// – `prepare()` doesn’t pause your app while the Taptic Engine warms up ,
+               /// and also doesn’t have any real performance cost when the system is already prepared .
+               uiNotificationFeedbackGenerator.prepare()
+            }
+            .onEnded { _ in
+               if abs(self.dragAmount.width) > 100 {
+                  if dragAmount.width > 0 {
+                     uiNotificationFeedbackGenerator.notificationOccurred(.success)
                   } else {
-                      self.dragAmount = .zero
+                     uiNotificationFeedbackGenerator.notificationOccurred(.error)
                   }
-              }
+                  // remove the card
+                  self.removal?()
+                  /// `TIP`: That question mark in there means the closure will only be called if it has been set .
+               } else {
+                  self.dragAmount = .zero
+               }
+            }
       )
       .onTapGesture {
          isShowingTheAnswer.toggle()

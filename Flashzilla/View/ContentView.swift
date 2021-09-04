@@ -41,6 +41,9 @@ struct ContentView: View {
             .edgesIgnoringSafeArea(.all)
          /// Place a timer above our cards :
          VStack {
+            Text("Remaining cards : \(cards.count)")
+               .font(.headline)
+               .foregroundColor(.white)
             Text("Time: \(remainingTime)")
                .font(.largeTitle)
                .foregroundColor(.white)
