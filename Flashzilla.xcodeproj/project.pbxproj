@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09346E4226E54A6400FD0BA7 /* EditCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09346E4126E54A6400FD0BA7 /* EditCardsView.swift */; };
 		094C6D6726DCB08100AD1F02 /* FlashzillaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094C6D6626DCB08100AD1F02 /* FlashzillaApp.swift */; };
 		094C6D6926DCB08100AD1F02 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094C6D6826DCB08100AD1F02 /* ContentView.swift */; };
 		094C6D6B26DCB08500AD1F02 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 094C6D6A26DCB08500AD1F02 /* Assets.xcassets */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		09346E4126E54A6400FD0BA7 /* EditCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardsView.swift; sourceTree = "<group>"; };
 		094C6D6326DCB08100AD1F02 /* Flashzilla.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flashzilla.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		094C6D6626DCB08100AD1F02 /* FlashzillaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashzillaApp.swift; sourceTree = "<group>"; };
 		094C6D6826DCB08100AD1F02 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 			children = (
 				094C6D6826DCB08100AD1F02 /* ContentView.swift */,
 				095B1DA326DFC02000B6720A /* CardView.swift */,
+				09346E4126E54A6400FD0BA7 /* EditCardsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -228,6 +231,7 @@
 				094C6D9226DD27E500AD1F02 /* TappableStackSpacer.swift in Sources */,
 				094C6D8F26DD251200AD1F02 /* DisablingUserInteractivity.swift in Sources */,
 				094C6D8C26DD201500AD1F02 /* AdvancedHapticsExperiment.swift in Sources */,
+				09346E4226E54A6400FD0BA7 /* EditCardsView.swift in Sources */,
 				094C6D8926DD1C9500AD1F02 /* AdvancedHaptics.swift in Sources */,
 				094C6D7D26DCD00A00AD1F02 /* AdvancedGestures.swift in Sources */,
 				094C6D6926DCB08100AD1F02 /* ContentView.swift in Sources */,

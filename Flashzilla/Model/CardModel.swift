@@ -6,7 +6,7 @@ import Foundation
 
 
 
-struct CardModel {
+struct CardModel: Codable {
    
    // MARK: - STATIC PROPERTIES
    

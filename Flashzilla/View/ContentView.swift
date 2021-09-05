@@ -15,10 +15,12 @@ struct ContentView: View {
    
    @Environment(\.accessibilityDifferentiateWithoutColor) var accessibilityDifferentiateWithoutColor
    @Environment(\.accessibilityEnabled) var accessibilityEnabled
-   @State private var cards: Array<CardModel> = Array<CardModel>(repeating: CardModel.example,
-                                                                 count: 10)
+   //   @State private var cards: Array<CardModel> = Array<CardModel>(repeating: CardModel.example,
+   //                                                                 count: 10)
+   @State private var cards: Array<CardModel> = Array<CardModel>()
    @State private var remainingTime = 100
    @State private var timerIsActive: Bool = true
+   @State private var isShowingEditScreen: Bool = false
    
    
    
@@ -89,31 +91,43 @@ struct ContentView: View {
 //                           .clipShape(Circle())
 //                     }
                      HStack {
-                         Button(action: {
-                             withAnimation {
-                                 self.removeCard(at: self.cards.count - 1)
-                             }
-                         }) {
-                             Image(systemName: "xmark.circle")
-                                 .padding()
-                                 .background(Color.black.opacity(0.7))
-                                 .clipShape(Circle())
-                         }
-                         .accessibility(label: Text("Wrong"))
-                         .accessibility(hint: Text("Mark your answer as being incorrect."))
-                         Spacer()
-                         Button(action: {
-                             withAnimation {
-                                 self.removeCard(at: self.cards.count - 1)
-                             }
-                         }) {
-                             Image(systemName: "checkmark.circle")
-                                 .padding()
-                                 .background(Color.black.opacity(0.7))
-                                 .clipShape(Circle())
-                         }
-                         .accessibility(label: Text("Correct"))
-                         .accessibility(hint: Text("Mark your answer as being correct."))
+                        Button(action: {
+                           withAnimation {
+                              self.removeCard(at: self.cards.count - 1)
+                           }
+                        }) {
+                           Image(systemName: "xmark.circle")
+                              .padding()
+                              .background(Color.black.opacity(0.7))
+                              .clipShape(Circle())
+                        }
+                        .accessibility(label: Text("Wrong"))
+                        .accessibility(hint: Text("Mark your answer as being incorrect."))
+                        Spacer()
+                        Button(action: {
+                           isShowingEditScreen.toggle()
+                        }, label: {
+                           Image(systemName: "plus.circle")
+                              .font(.largeTitle)
+                              .foregroundColor(.white)
+                              .padding()
+                              .background(Color.blue.opacity(0.7))
+                              .clipShape(Circle())
+                           
+                        })
+                        Spacer()
+                        Button(action: {
+                           withAnimation {
+                              self.removeCard(at: self.cards.count - 1)
+                           }
+                        }) {
+                           Image(systemName: "checkmark.circle")
+                              .padding()
+                              .background(Color.black.opacity(0.7))
+                              .clipShape(Circle())
+                        }
+                        .accessibility(label: Text("Correct"))
+                        .accessibility(hint: Text("Mark your answer as being correct."))
                      }
                      .font(.largeTitle)
                      .foregroundColor(.white)
@@ -150,6 +164,11 @@ struct ContentView: View {
             self.timerIsActive = true
          }
       }
+      .sheet(isPresented: $isShowingEditScreen,
+             onDismiss: resetGame) {
+         EditCardsView()
+      }
+      .onAppear(perform: resetGame)
    }
    
    
@@ -177,6 +196,18 @@ struct ContentView: View {
                                count: 10)
       remainingTime = 100
       timerIsActive = true
+      loadData()
+   }
+   
+   
+   func loadData() {
+      
+      if let data = UserDefaults.standard.data(forKey: "Cards") {
+         if let decoded = try? JSONDecoder().decode([CardModel].self,
+                                                    from: data) {
+            self.cards = decoded
+         }
+      }
    }
 }
 
@@ -188,14 +219,14 @@ struct ContentView: View {
 
 extension View {
    
-    func stacked(at position: Int,
-                 in total: Int)
-    -> some View {
+   func stacked(at position: Int,
+                in total: Int)
+   -> some View {
       
-        let offset = CGFloat(total - position)
-        return self.offset(CGSize(width: 0,
-                                  height: offset * 10))
-    }
+      let offset = CGFloat(total - position)
+      return self.offset(CGSize(width: 0,
+                                height: offset * 10))
+   }
 }
 
 
@@ -209,5 +240,6 @@ struct ContentView_Previews: PreviewProvider {
    static var previews: some View {
       
       ContentView()
+         .previewDevice("iPad Pro (9.7-inch)")
    }
 }
