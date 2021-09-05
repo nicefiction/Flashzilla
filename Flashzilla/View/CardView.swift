@@ -1,6 +1,7 @@
 // CardView.swift
 // MARK: SOURCE
 // https://www.hackingwithswift.com/books/ios-swiftui/making-iphones-vibrate-with-uinotificationfeedbackgenerator
+// https://www.hackingwithswift.com/books/ios-swiftui/fixing-the-bugs
 
 // MARK: - LIBRARIES -
 
@@ -13,6 +14,11 @@ struct CardView: View {
    // MARK: - PROPERTY WRAPPERS
    
    @Environment(\.accessibilityDifferentiateWithoutColor) var accessibilityDifferentiateWithoutColor
+   /// SwiftUI doesn’t have an environment property that tells us when VoiceOver is running ,
+   /// but instead has a general property called `\.accessibilityEnabled`.
+   /// This isn’t triggered when things like Differentiate Without Color , Reduce Motion , or Reduce Transparency are enabled ,
+   /// and it’s the closest option SwiftUI gives us to “VoiceOver Running” :
+   @Environment(\.accessibilityEnabled) var accessibilityEnabled
    @State private var isShowingTheAnswer: Bool = false
    @State private var dragAmount: CGSize = CGSize.zero // offset (PAUL HUDSON)
    @State private var uiNotificationFeedbackGenerator = UINotificationFeedbackGenerator()
@@ -59,13 +65,19 @@ struct CardView: View {
             .background(accessibilityDifferentiateWithoutColor ? nil : cardFeedbackColor)
             .shadow(radius: 10)
          VStack {
-            Text(card.question)
-               .font(.largeTitle)
-               .foregroundColor(.black)
-            if isShowingTheAnswer {
-               Text(card.answer)
-                  .font(.title)
-                  .foregroundColor(.gray)
+            if accessibilityEnabled {
+               Text(isShowingTheAnswer ? card.answer : card.question)
+                  .font(.largeTitle)
+                  .foregroundColor(.black)
+            } else {
+               Text(card.question)
+                  .font(.largeTitle)
+                  .foregroundColor(.black)
+               if isShowingTheAnswer {
+                  Text(card.answer)
+                     .font(.title)
+                     .foregroundColor(.gray)
+               }
             }
          }
          .padding(20)
@@ -109,6 +121,7 @@ struct CardView: View {
       /// and subtract that from `2` to get `1` , so the opacity is still `1` – the card is still fully opaque .
       /// But beyond `50` points we start to fade out the card , until at 100 points left or right
       /// the opacity is `0` .
+      .accessibility(addTraits: .isButton)
       .gesture(
           DragGesture()
             /// Drag gestures have two useful modifiers of their own ,
@@ -153,6 +166,7 @@ struct CardView: View {
          isShowingTheAnswer.toggle()
          
       }
+      .animation(.spring())
    }
 }
 

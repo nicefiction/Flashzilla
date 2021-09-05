@@ -14,6 +14,7 @@ struct ContentView: View {
    // MARK: - PROPERTY WRAPPERS
    
    @Environment(\.accessibilityDifferentiateWithoutColor) var accessibilityDifferentiateWithoutColor
+   @Environment(\.accessibilityEnabled) var accessibilityEnabled
    @State private var cards: Array<CardModel> = Array<CardModel>(repeating: CardModel.example,
                                                                  count: 10)
    @State private var remainingTime = 100
@@ -35,7 +36,9 @@ struct ContentView: View {
       
       /// Place our cards and timer on top of a background :
       ZStack {
-         Image("background")
+         /// Use a `decorative` image
+         /// so it won’t be read out as part of the accessibility layout :.
+         Image(decorative: "background")
             .resizable()
             .scaledToFill()
             .edgesIgnoringSafeArea(.all)
@@ -64,20 +67,53 @@ struct ContentView: View {
                   }
                   .stacked(at: index,
                            in: cards.count)
+                  /// Only the last card – the one on top – can be dragged around :
+                  .allowsHitTesting(index == cards.count - 1)
+                  /// Every card that’s at an index less than the top card
+                  /// should be hidden from the accessibility system
+                  /// because there is really nothing useful it can do with the card :
+                  .accessibility(hidden: index < cards.count - 1)
                }
-               if accessibilityDifferentiateWithoutColor {
+               if accessibilityDifferentiateWithoutColor || accessibilityEnabled {
                   VStack {
                      Spacer()
+//                     HStack {
+//                        Image(systemName: "xmark.circle")
+//                           .padding()
+//                           .background(Color.black.opacity(0.70))
+//                           .clipShape(Circle())
+//                        Spacer()
+//                        Image(systemName: "checkmark.circle")
+//                           .padding()
+//                           .background(Color.black.opacity(0.70))
+//                           .clipShape(Circle())
+//                     }
                      HStack {
-                        Image(systemName: "xmark.circle")
-                           .padding()
-                           .background(Color.black.opacity(0.70))
-                           .clipShape(Circle())
-                        Spacer()
-                        Image(systemName: "checkmark.circle")
-                           .padding()
-                           .background(Color.black.opacity(0.70))
-                           .clipShape(Circle())
+                         Button(action: {
+                             withAnimation {
+                                 self.removeCard(at: self.cards.count - 1)
+                             }
+                         }) {
+                             Image(systemName: "xmark.circle")
+                                 .padding()
+                                 .background(Color.black.opacity(0.7))
+                                 .clipShape(Circle())
+                         }
+                         .accessibility(label: Text("Wrong"))
+                         .accessibility(hint: Text("Mark your answer as being incorrect."))
+                         Spacer()
+                         Button(action: {
+                             withAnimation {
+                                 self.removeCard(at: self.cards.count - 1)
+                             }
+                         }) {
+                             Image(systemName: "checkmark.circle")
+                                 .padding()
+                                 .background(Color.black.opacity(0.7))
+                                 .clipShape(Circle())
+                         }
+                         .accessibility(label: Text("Correct"))
+                         .accessibility(hint: Text("Mark your answer as being correct."))
                      }
                      .font(.largeTitle)
                      .foregroundColor(.white)
@@ -121,6 +157,12 @@ struct ContentView: View {
    // MARK: - METHODS
    
    func removeCard(at index: Int) {
+      
+      /// Because those buttons remain onscreen even when the last card has been removed ,
+      /// we need to add a `guard` check to the start of `removeCard(at:)`
+      /// to make sure we don’t try to remove a card that doesn’t exist :
+      guard index >= 0
+      else { return }
       
       cards.remove(at: index)
       if cards.isEmpty {
